@@ -1,0 +1,10 @@
+2019/09/16 sr
+  Crear el usuario en github: 
+	usuario: sandra1036
+	correo:sandraromero262@gmail.com
+  Crear repositorio:
+	Nombre: AD
+	Inicializar con README
+	.gitignore: VisualStudio (por C#)
+  Clonar en my home: 
+	git clone https://github.com/sandra1036/AD.git
