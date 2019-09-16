@@ -2,9 +2,25 @@
   Crear el usuario en github: 
 	usuario: sandra1036
 	correo:sandraromero262@gmail.com
+
   Crear repositorio:
 	Nombre: AD
 	Inicializar con README
 	.gitignore: VisualStudio (por C#)
+
   Clonar en my home: 
 	git clone https://github.com/sandra1036/AD.git
+
+Configuración local de git:
+	git config --global user.name sandra1036
+	git config --global user.email sandraromero262@gmail.com
+	git config --global push.default simple
+
+Nuevo archivo:
+	git add diario.txt (o git add .)
+	git commit -m "diario.txt con detalles sobre github y git"
+	git push (para publicar nueva versión)
+
+Otros comandos :
+	git log (muestra la lista de versiones)
+	git status (muestra status)
