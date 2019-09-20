@@ -24,3 +24,5 @@ Nuevo archivo:
 Otros comandos :
 	git log (muestra la lista de versiones)
 	git status (muestra status)
+
+
