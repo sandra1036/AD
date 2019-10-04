@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
+using Serpis.Ad;
 
 namespace CMySql
 {
@@ -17,8 +18,8 @@ namespace CMySql
            
 
             dbConnection.Open();
-            //Insert();
-            //showAll();
+            Insert();
+            showAll();
             ShowMetaInfo ();
 
             dbConnection.Close();
@@ -42,8 +43,17 @@ namespace CMySql
        public static void Insert(){
 
             IDbCommand dbCommand = dbConnection.CreateCommand();
-            string nombre = "nuevo" + DateTime.Now;
-            dbCommand.CommandText = String.Format("insert into categoria(nombre) values ('{0}')", nombre);
+            //string nombre = "nuevo" + DateTime.Now;
+            Console.Write("Nombre: ");
+            string nombre=Console.ReadLine(); 
+            dbCommand.CommandText = "insert into categoria(nombre) values (@nombre)";
+
+            //IDbDataParameter dbDataParameter = dbCommand.CreateParameter ();
+            //dbDataParameter.ParameterName = "nombre";
+            //dbDataParameter.Value = nombre;//"cat. 33"
+            //dbCommand.Parameters.Add (dbDataParameter);
+
+           DbCommandHelper.AddParameter (dbCommand, "nombre", nombre);
             dbCommand.ExecuteNonQuery();
 
         }
