@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
+using Serpis.Ad;
 
 namespace CArticulo {
 
@@ -25,7 +26,7 @@ namespace CArticulo {
         }
 
         public static void Show() {
-
+            Console.WriteLine ("Ha entrado en mostrar");
             IDbCommand dbCommand = dbConnection.CreateCommand ();
 
             dbCommand.CommandText = "select * from articulo";
@@ -43,7 +44,24 @@ namespace CArticulo {
         }
         public static void nuevo() {
 
-            Console.WriteLine ("Ha entrado en en nuevo");
+            Console.WriteLine("Ha entrado en nuevo");
+
+            Console.Write("Nombre: ");
+            string nombre= Console.ReadLine ();
+
+            Console.Write("Precio: ");
+            string precio =Console.ReadLine ();
+
+            Console.Write("Categoria: ");
+            string categoria=Console.ReadLine ();
+
+            IDbCommand dbCommand = dbConnection.CreateCommand ();
+
+            dbCommand.CommandText = "insert into articulo (nombre,precio,categoria) values (@nombre,@precio,@categoria)";
+            DbCommandHelper.AddParameter(dbCommand,"nombre",nombre);
+            DbCommandHelper.AddParameter (dbCommand, "precio", precio);
+            DbCommandHelper.AddParameter (dbCommand, "categoria", categoria);
+            dbCommand.ExecuteNonQuery ();
 
         }
 
