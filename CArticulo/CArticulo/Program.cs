@@ -13,7 +13,14 @@ namespace CArticulo {
         public static void Main(string[] args) {
 
             Console.WriteLine ("Acceso a dbprueba");
-            Show ();
+            dbConnection.Open ();
+            Menu.Create ("Menú Categorias")
+                .Add ("1-Nuevo", nuevo)
+                .Add ("2-Editar", editar)
+                .Add ("3-Borrar", borrar)
+                .Add("4-Mostar",Show)
+                .ExitWhen ("0-Salir")
+                .Loop ();
 
         }
 
@@ -32,6 +39,24 @@ namespace CArticulo {
             }
 
             dataReader.Close ();
+
+        }
+        public static void nuevo() {
+
+            Console.WriteLine ("Ha entrado en en nuevo");
+
+        }
+
+
+        public static void editar() {
+
+            Console.WriteLine ("Ha entrado en editar");
+
+        }
+
+        public static void borrar() {
+
+            Console.WriteLine ("Ha entrado en borrar");
 
         }
 
