@@ -12,10 +12,12 @@ namespace CArticulo {
 
 
         public static void Main(string[] args) {
+           //int entero = DbCommandHelper.ReadInteger ("Introduce una opción: ");
 
             Console.WriteLine ("Acceso a dbprueba");
             dbConnection.Open ();
-            Menu.Create ("Menú Categorias")
+    
+            Menu.Create ("Menú Articulo")
                 .Add ("1-Nuevo", nuevo)
                 .Add ("2-Editar", editar)
                 .Add ("3-Borrar", borrar)
@@ -25,23 +27,7 @@ namespace CArticulo {
 
         }
 
-        public static void Show() {
-            Console.WriteLine ("Ha entrado en mostrar");
-            IDbCommand dbCommand = dbConnection.CreateCommand ();
 
-            dbCommand.CommandText = "select * from articulo";
-
-            IDataReader dataReader = dbCommand.ExecuteReader ();
-
-            while (dataReader.Read ()) {
-
-                Console.WriteLine ("id={0} nombre={1} precio={2} categoria={3}",dataReader["id"],dataReader["nombre"],dataReader["precio"],dataReader["categoria"]);
-
-            }
-
-            dataReader.Close ();
-
-        }
         public static void nuevo() {
 
             Console.WriteLine("Ha entrado en nuevo");
@@ -52,17 +38,17 @@ namespace CArticulo {
             Console.Write("Precio: ");
             string precio =Console.ReadLine ();
 
-            Console.Write("Categoria: ");
-            string categoria=Console.ReadLine ();
+            Console.Write ("Categoria: ");
+            string categoria = Console.ReadLine ();
 
             IDbCommand dbCommand = dbConnection.CreateCommand ();
 
-            dbCommand.CommandText = "insert into articulo (nombre,precio,categoria) values (@nombre,@precio,@categoria)";
+            dbCommand.CommandText = "insert into articulo(nombre,precio,categoria) values (@nombre,@precio,@categoria)";
             DbCommandHelper.AddParameter(dbCommand,"nombre",nombre);
             DbCommandHelper.AddParameter (dbCommand, "precio", precio);
             DbCommandHelper.AddParameter (dbCommand, "categoria", categoria);
             dbCommand.ExecuteNonQuery ();
-
+            dbConnection.Close ();
         }
 
 
@@ -78,7 +64,23 @@ namespace CArticulo {
 
         }
 
+        public static void Show() {
+            Console.WriteLine ("Ha entrado en mostrar");
+            IDbCommand dbCommand = dbConnection.CreateCommand ();
 
+            dbCommand.CommandText = "select * from articulo";
+
+            IDataReader dataReader = dbCommand.ExecuteReader ();
+
+            while (dataReader.Read ()) {
+
+                Console.WriteLine ("id={0} nombre={1} precio={2} categoria={3}", dataReader["id"], dataReader["nombre"], dataReader["precio"], dataReader["categoria"]);
+
+            }
+
+            dataReader.Close ();
+
+        }
     }
 
   }
