@@ -43,7 +43,7 @@ Máquina real: descargar de bitnami.com LAMP e instalar
 
  Instalar:
 	poner bit de ejecución, dar doble click y ESPERAR
- 	en componentes dejemos sólo phpMyAdmin
+ 	en componentes dejemos sólo phpMyAdmin comentar #skip-name-resolve
  
  root/ sistemas
 
