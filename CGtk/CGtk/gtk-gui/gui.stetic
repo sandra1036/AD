@@ -166,7 +166,7 @@
             <property name="Size">2</property>
             <property name="LayoutStyle">End</property>
             <child>
-              <widget class="Gtk.Button" id="button4">
+              <widget class="Gtk.Button" id="buttonAceptar">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="UseStock">True</property>
@@ -180,7 +180,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="button5">
+              <widget class="Gtk.Button" id="buttonCancel">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="UseStock">True</property>

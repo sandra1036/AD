@@ -1,8 +1,14 @@
 ﻿using System;
 using Gtk;
 using CGtk;
+
+/*Modelo-> Categoria -> id,nombre
+  CategoriaDao -> Acceso a Datos (insertar,modificar...)
+  Una clase para la conexión*/
+
 public partial class MainWindow : Gtk.Window {
     public MainWindow() : base (Gtk.WindowType.Toplevel) {
+
         Build ();
 
         treeView.AppendColumn ("id", new CellRendererText (), "text", 0);
@@ -16,7 +22,7 @@ public partial class MainWindow : Gtk.Window {
 
         newAction.Activated += (sender, e) => new CategoriaWindow ();
 
-
+        quitAction.Activated += (sender, e) => Application.Quit ();
 
     }
 
