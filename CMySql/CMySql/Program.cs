@@ -15,7 +15,7 @@ namespace CMySql
         {
 
             Console.WriteLine("Acceso a dbprueba");
-           
+
 
             dbConnection.Open();
             Insert();
