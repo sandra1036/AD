@@ -21,7 +21,8 @@ public partial class MainWindow : Gtk.Window {
         listStore.AppendValues ("2", "cat 2");
 
         newAction.Activated += (sender, e) => new CategoriaWindow ();
-
+        refreshStateActions ();
+        treeView.Selection.Changed += (sender, e) => refreshStateActions ();//activa los botones cuando selecionas una fila
         quitAction.Activated += (sender, e) => Application.Quit ();
 
     }
@@ -29,5 +30,10 @@ public partial class MainWindow : Gtk.Window {
     protected void OnDeleteEvent(object sender, DeleteEventArgs a) {
         Application.Quit ();
         a.RetVal = true;
+    }
+    private void refreshStateActions() {
+        bool hasSelectedRows=treeView.Selection.CountSelectedRows() > 0;
+        editAction.Sensitive = hasSelectedRows;
+        deleteAction.Sensitive = hasSelectedRows;
     }
 }
