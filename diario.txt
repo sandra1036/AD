@@ -24,6 +24,7 @@
   Otros comandos :
 	git log (muestra la lista de versiones)
 	git status (muestra status)
+	git add -f para añadir las librerias (no se añaden directamente)
 
 2019/09/20 sr
  En VirtualBox crear máquina virtual instando ubuntu 16.04:
