@@ -15,11 +15,12 @@ insert into categoria (nombre) values ('categoría 3');
 Menú: salir,nuevo,editar,consultar,eliminar,listar*/
 
 create table articulo(
+
 	id  serial primary key,
 	nombre varchar(50) unique not null,
 	precio numeric(10,2),
-	categoria bigint usigner
-	FOREIGN KEY(id) REFERENCES categoria(id)
+	categoria bigint usigner,
+	FOREIGN KEY(categoria) REFERENCES categoria(id)
 
 );
 
