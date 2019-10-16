@@ -31,9 +31,14 @@ public partial class MainWindow : Gtk.Window {
         Application.Quit ();
         a.RetVal = true;
     }
+
     private void refreshStateActions() {
         bool hasSelectedRows=treeView.Selection.CountSelectedRows() > 0;
         editAction.Sensitive = hasSelectedRows;
         deleteAction.Sensitive = hasSelectedRows;
+    }
+    public void Fill(TreeView treeView,string [] propiertyName) {
+        CellRendererText cellRendererText = new CellRendererText ();
+
     }
 }
