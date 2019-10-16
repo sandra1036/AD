@@ -106,8 +106,12 @@ namespace CArticulo {
                 precio = Console.ReadLine ();
                 Console.WriteLine ("Dime la categoria");
                 categoria = Console.ReadLine ();
-                dbCommand.CommandText = "update articulo set nombre=@nombre precio=@precio categoria=@categoria where id=@id";
-               
+                dbCommand.CommandText = "update articulo set nombre=@nombre,precio=@precio,categoria=@categoria where id=@id";
+                DbCommandHelper.AddParameter(dbCommand, "nombre", nombre);
+                DbCommandHelper.AddParameter (dbCommand, "precio", precio);
+                DbCommandHelper.AddParameter (dbCommand, "categoria", categoria);
+
+
                 dbCommand.ExecuteNonQuery ();
             }
             dbCommand.ExecuteNonQuery ();
