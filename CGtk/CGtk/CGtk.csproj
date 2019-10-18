@@ -52,8 +52,12 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="System.Data" />
     <Reference Include="CSerpisAd">
       <HintPath>..\..\CSerpisAd\CSerpisAd\bin\Debug\CSerpisAd.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\mysqldata\MySql.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +75,7 @@
     <Compile Include="gtk-gui\CGtk.CategoriaWindow.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="Categoria.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

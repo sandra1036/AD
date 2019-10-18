@@ -16,9 +16,9 @@ namespace CGtk
 
 		private global::Gtk.HButtonBox hbuttonbox3;
 
-		private global::Gtk.Button button4;
+		private global::Gtk.Button buttonAceptar;
 
-		private global::Gtk.Button button5;
+		private global::Gtk.Button buttonCancel;
 
 		private global::Gtk.HButtonBox hbuttonbox2;
 
@@ -75,25 +75,26 @@ namespace CGtk
 			this.hbuttonbox3.Name = "hbuttonbox3";
 			this.hbuttonbox3.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child hbuttonbox3.Gtk.ButtonBox+ButtonBoxChild
-			this.button4 = new global::Gtk.Button();
-			this.button4.CanFocus = true;
-			this.button4.Name = "button4";
-			this.button4.UseStock = true;
-			this.button4.UseUnderline = true;
-			this.button4.Label = "gtk-ok";
-			this.hbuttonbox3.Add(this.button4);
-			global::Gtk.ButtonBox.ButtonBoxChild w5 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox3[this.button4]));
+			this.buttonAceptar = new global::Gtk.Button();
+			this.buttonAceptar.CanFocus = true;
+			this.buttonAceptar.Events = ((global::Gdk.EventMask)(256));
+			this.buttonAceptar.Name = "buttonAceptar";
+			this.buttonAceptar.UseStock = true;
+			this.buttonAceptar.UseUnderline = true;
+			this.buttonAceptar.Label = "gtk-ok";
+			this.hbuttonbox3.Add(this.buttonAceptar);
+			global::Gtk.ButtonBox.ButtonBoxChild w5 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox3[this.buttonAceptar]));
 			w5.Expand = false;
 			w5.Fill = false;
 			// Container child hbuttonbox3.Gtk.ButtonBox+ButtonBoxChild
-			this.button5 = new global::Gtk.Button();
-			this.button5.CanFocus = true;
-			this.button5.Name = "button5";
-			this.button5.UseStock = true;
-			this.button5.UseUnderline = true;
-			this.button5.Label = "gtk-cancel";
-			this.hbuttonbox3.Add(this.button5);
-			global::Gtk.ButtonBox.ButtonBoxChild w6 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox3[this.button5]));
+			this.buttonCancel = new global::Gtk.Button();
+			this.buttonCancel.CanFocus = true;
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.UseStock = true;
+			this.buttonCancel.UseUnderline = true;
+			this.buttonCancel.Label = "gtk-cancel";
+			this.hbuttonbox3.Add(this.buttonCancel);
+			global::Gtk.ButtonBox.ButtonBoxChild w6 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox3[this.buttonCancel]));
 			w6.Position = 1;
 			w6.Expand = false;
 			w6.Fill = false;
