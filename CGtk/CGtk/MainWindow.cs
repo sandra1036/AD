@@ -35,32 +35,30 @@ public partial class MainWindow : Gtk.Window {
         TreeViewHelper.Fill (treeView, new string[] { "Id", "Nombre" }, CategoriaDao.GetAll());
 
         newAction.Activated += (sender, e) => {
-
-            new CategoriaWindow (null);
+            Categoria categoria = new Categoria ();
+            new CategoriaWindow (categoria);
 
         };
 
         editAction.Activated += (sender, e) => {
             object id = TreeViewHelper.GetId (treeView);
-            new CategoriaWindow (id);
+            Categoria categoria = CategoriaDao.Load(id);
+            new CategoriaWindow (categoria);
 
 
             //Console.WriteLine ("editAction Activated Name = " + value);
 
         };
-
         refreshAction.Activated += (sender, e) =>
-            TreeViewHelper.Fill (treeView, new string[] { "Id", "Nombre" }, CategoriaDao.GetAll());
+            TreeViewHelper.Fill (treeView, new string[] { "Id", "Nombre" }, CategoriaDao.GetAll ());
 
         refreshStateActions ();
-
-        treeView.Selection.Changed += (sender, e) => refreshStateActions ();//Activa los botones cuando selecionas una fila
-        quitAction.Activated += (sender, e) => Application.Quit ();
+        treeView.Selection.Changed += (sender, e) => refreshStateActions ();
     }
 
-       
 
-    
+
+
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a) {
         Application.Quit ();

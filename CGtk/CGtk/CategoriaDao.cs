@@ -42,7 +42,7 @@ namespace CGtk {
         }
         private static string select = "update categoria set nombre=@nombre where id=@id";
 
-        public static Load(object id) {
+        public static Categoria Load(object id) {
             Categoria categoria = new Categoria ();
             IDbCommand dbCommand = App.Intance.DbConnection.CreateCommand ();
             dbCommand.CommandText = select;
@@ -53,6 +53,48 @@ namespace CGtk {
             categoria.Nombre = (string)dataReader["nombre"];
             dataReader.Close ();
             return categoria;
+        }
+
+        public static void Save(Categoria categoria) {
+            if (categoria.Id == 0) {
+
+                insert(categoria);
+
+
+            } else {
+
+                update (categoria);
+
+            }
+
+        }
+
+        private static string insertSql = "insert into categoria(nombre) values(@nombre)";
+        private static void insert(Categoria categoria) {
+            IDbCommand dbCommand = App.Intance.DbConnection.CreateCommand ();
+            dbCommand.CommandText = insertSql;
+            DbCommandHelper.AddParameter (dbCommand, "nombre", categoria.Nombre); 
+
+        }
+
+        private static string updateSql = "update categoria set nombre=@nombre where id=@id";
+
+        private static void update(Categoria categoria) {
+
+            IDbCommand dbCommand = App.Intance.DbConnection.CreateCommand();
+            dbCommand.CommandText = updateSql;
+            DbCommandHelper.AddParameter (dbCommand, "nombre", categoria.Nombre);
+            DbCommandHelper.AddParameter (dbCommand, "id", categoria.Id);
+            dbCommand.ExecuteNonQuery();
+
+        }
+
+        private static string deleteSql = "delete from categoria where id=@id";
+        public static void delete(Object id) {
+            IDbCommand dbCommand = App.Intance.DbConnection.CreateCommand ();
+            dbCommand.CommandText = deleteSql;
+            DbCommandHelper.AddParameter (dbCommand, "id", id);
+
         }
 
     }

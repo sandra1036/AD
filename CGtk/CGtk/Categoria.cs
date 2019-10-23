@@ -13,7 +13,7 @@ namespace CGtk {
         }
 
         private ulong id;
-        private string nombre;
+        private string nombre="";
 
         public ulong Id {
             get { return id; }
