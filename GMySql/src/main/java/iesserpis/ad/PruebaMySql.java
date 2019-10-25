@@ -20,6 +20,7 @@ public class PruebaMySql {
 		
 		
 		ShowAll();
+		insert();
 		connection.close();
 		
 	}
