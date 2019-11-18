@@ -1,10 +1,26 @@
 package iesserpis.ad;
 
+import java.sql.Connection;
+
 public class App {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+	private static App instance = new App();
+
+	public static App getInstance() {
+		return instance;
+	}
+	
+	private App() {
+	}
+	
+	private Connection connection;
+	public Connection getConnection() {
+		return connection;
+	}
+	
+	public void setConnection(Connection connection) {
+		this.connection = connection;
 	}
 
 }
