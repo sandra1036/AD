@@ -1,7 +1,8 @@
 package Serpis.ad;
 
-import java.awt.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,7 +31,7 @@ public class Clientes {
 	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
 	
-	private ArrayList<Pedidos> ped=new ArrayList<>();
+	private List<Pedidos> ped;
 	
 	
 	
