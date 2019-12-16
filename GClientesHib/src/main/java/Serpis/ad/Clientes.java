@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity(name="Clientes")
@@ -29,7 +30,8 @@ public class Clientes {
 	private Long telefono;
 
 	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(targetEntity=Pedidos.class,cascade=CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name ="id_cliente")
 	
 	private List<Pedidos> ped;
 	
@@ -66,7 +68,5 @@ public class Clientes {
 	public void setTelefono(Long telefono) {
 		this.telefono = telefono;
 	}
-	
-	
 }
 

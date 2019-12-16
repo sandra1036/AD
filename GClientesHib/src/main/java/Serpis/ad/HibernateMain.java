@@ -13,7 +13,7 @@ public class HibernateMain {
 		Clientes cli=new Clientes();
 	
 		Scanner tcl=new Scanner(System.in);
-		System.out.println("=========Menu======");
+		System.out.println("======Menu======");
 		System.out.println("1.Clientes");
 		System.out.println("2.Pedidos");
 		int op=tcl.nextInt();
@@ -48,6 +48,7 @@ public class HibernateMain {
 				break;
 			case 4:
 				System.out.println("Has entrado en Mostrar");
+				ClienteDAO.ShowAll(cli);
 				break;
 			case 0:
 				
