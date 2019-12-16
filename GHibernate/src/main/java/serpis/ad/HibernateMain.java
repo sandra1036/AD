@@ -15,7 +15,9 @@ public class HibernateMain {
 		categoria.setNombre("cat 33"+ LocalDateTime.now());
 		
 		EntityManager entityManager=entityManagerFactory.createEntityManager();//PreparedStatement para las consultas
+		entityManager.getTransaction().begin();
 		entityManager.persist(categoria);
+		entityManager.getTransaction().commit();
 		entityManager.close();
 		
 		
