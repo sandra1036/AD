@@ -2,6 +2,9 @@ package Serpis.ad;
 
 import java.util.Scanner;
 
+import Serpis.ad.Clases.Categoria;
+import Serpis.ad.DAO.CategoriaDao;
+
 public class HibernateMain {
 
 	public static void main(String[] args) {
@@ -30,7 +33,7 @@ public class HibernateMain {
 				
 				switch (op2) {
 				case 1:
-					
+				
 					break;
 
 				case 2:
