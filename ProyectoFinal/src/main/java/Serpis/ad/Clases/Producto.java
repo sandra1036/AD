@@ -1,4 +1,4 @@
-package Serpis.ad;
+package Serpis.ad.Clases;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

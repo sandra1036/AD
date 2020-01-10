@@ -1,4 +1,4 @@
-package Serpis.ad;
+package Serpis.ad.Clases;
 
 import java.util.List;
 
