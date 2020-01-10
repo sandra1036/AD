@@ -3,10 +3,13 @@ package Serpis.ad;
 import java.util.Scanner;
 
 import Serpis.ad.Clases.Categoria;
+import Serpis.ad.Clases.Cliente;
 import Serpis.ad.DAO.CategoriaDao;
+import Serpis.ad.DAO.PedidosDAO;
 
 public class HibernateMain {
-
+		private static Cliente cli;
+	
 	public static void main(String[] args) {
 		Scanner tcl=new Scanner(System.in);
 		System.out.println("======Menu=====");
@@ -142,7 +145,7 @@ public class HibernateMain {
 				
 				switch (op5) {
 				case 1:
-					
+						PedidosDAO.Insert(cli);
 					break;
 
 				case 2:
@@ -216,7 +219,7 @@ public class HibernateMain {
 			
 			
 		} catch (Exception e) {
-				System.out.println("No se puede insertar letras");
+				e.printStackTrace();
 		}
 		
 		

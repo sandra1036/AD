@@ -14,7 +14,7 @@ public class PedidosDAO {
 
 	public static void Insert(Cliente cli) {
 		Scanner tcl=new Scanner(System.in);
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.gclienteshib");//crea la conexión a la base de datos
+		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.ProyectoFinal");//crea la conexión a la base de datos
 		Pedido ped=new Pedido();
 		System.out.println("Cliente: ");
 		Long id_cliente=tcl.nextLong();
