@@ -35,9 +35,6 @@ public class Linea_pedido {
 	@JoinColumn(name = "id_pedido",foreignKey = @ForeignKey(name = "pedido"))
 	
 
-	@OneToMany(targetEntity=Producto.class,cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name ="id_producto")
-	
 	private Producto producto;
 	
 	private List<Producto> pro;

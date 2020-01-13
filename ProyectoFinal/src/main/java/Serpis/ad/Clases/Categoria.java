@@ -22,11 +22,7 @@ public class Categoria {
 	@Column
 	private String nombre;
 	
-	
-	@OneToMany(targetEntity=Producto.class,cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name ="id_cat")
-	
-	private List<Producto> pro;
+
 	
 	
 	public long getId() {
