@@ -12,7 +12,8 @@ import javax.persistence.Persistence;
 import Serpis.ad.Clases.Cliente;
 
 public class ClienteDAO {
-
+	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.ProyectoFinal");//crea la conexión a la base de datos
+	public static EntityManager entityManager;
 		
 	public static void Insert() {
 		Scanner tcl=new Scanner(System.in);
@@ -25,8 +26,6 @@ public class ClienteDAO {
 		System.out.println("Dime tu telefono: ");
 		Long tele=tcl.nextLong();
 		cli.setTelefono(tele);
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.ProyectoFinal");//crea la conexión a la base de datos
-		EntityManager entityManager=entityManagerFactory.createEntityManager();//PreparedStatement para las consultas
 		entityManager=entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(cli);
@@ -38,7 +37,8 @@ public class ClienteDAO {
 		
 		Scanner tcl=new Scanner(System.in);
 		System.out.println("¿Cual es el id que deseas cambiar?");
-		Long idcliente=tcl.nextLong();
+		Long idcliente=tcl.nextLong();	
+		entityManager=entityManagerFactory.createEntityManager();
 		entityManager.createQuery("from clientes where id_cliente=idcliente");
 		System.out.println("¿Qué deseas cambiar?");
 		System.out.println("1.Nombre");

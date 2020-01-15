@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-@Entity(name="Pedidos")
+@Entity(name="Pedido")
 public class Pedido {
 
 	@Id
@@ -29,7 +29,10 @@ public class Pedido {
 	@Column
 	private Long id_cliente;
 	
-
+	@OneToMany(targetEntity=Linea_pedido.class,cascade=CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name ="pedido")
+	
+	private List<Linea_pedido> linea_pedido;
 	
 	public Long getId_pedido() {
 		return id_pedido;

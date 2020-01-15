@@ -14,11 +14,10 @@ import Serpis.ad.Libreria.App;
 
 public class CategoriaDao {
 	
-
+	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.ProyectoFinal");
 	
 	public static void insertar() {
 		Scanner tcl=new Scanner(System.in);
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.ProyectoFinal");//crea la conexión a la base de datos
 		Categoria categoria=new Categoria();
 		System.out.println("Dime el nombre de la categoria:");
 		String nombre=tcl.nextLine();
