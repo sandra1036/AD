@@ -12,20 +12,17 @@ import javax.persistence.Persistence;
 import Serpis.ad.Clases.Cliente;
 
 public class ClienteDAO {
-	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.ProyectoFinal");//crea la conexión a la base de datos
+	public static EntityManagerFactory entityManagerFactory;//crea la conexión a la base de datos
 	public static EntityManager entityManager;
 		
 	public static void Insert() {
 		Scanner tcl=new Scanner(System.in);
 		
 		Cliente cli=new Cliente();
+		Long id=tcl.nextLong();
+		cli.setId_cliente(id);
 		cli.setNombre("Cliente"+LocalDateTime.now());
-		System.out.println("Dime tu DNI");
-		String dni=tcl.nextLine();
-		cli.setDni(dni);
-		System.out.println("Dime tu telefono: ");
-		Long tele=tcl.nextLong();
-		cli.setTelefono(tele);
+		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
 		entityManager=entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(cli);
@@ -33,6 +30,7 @@ public class ClienteDAO {
 		entityManager.close();
 		entityManagerFactory.close();
 	}
+	
 	public static void Update() {
 		
 		Scanner tcl=new Scanner(System.in);
@@ -42,8 +40,6 @@ public class ClienteDAO {
 		entityManager.createQuery("from clientes where id_cliente=idcliente");
 		System.out.println("¿Qué deseas cambiar?");
 		System.out.println("1.Nombre");
-		System.out.println("2.DNI");
-		System.out.println("3.Telefono");
 		int op =tcl.nextInt();
 		switch (op) {
 		case 1:

@@ -14,7 +14,8 @@ import Serpis.ad.Libreria.App;
 
 public class CategoriaDao {
 	
-	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.ProyectoFinal");
+	public static EntityManagerFactory entityManagerFactory;
+	public static EntityManager EntityManager; 
 	
 	public static void insertar() {
 		Scanner tcl=new Scanner(System.in);
@@ -22,6 +23,7 @@ public class CategoriaDao {
 		System.out.println("Dime el nombre de la categoria:");
 		String nombre=tcl.nextLine();
 		categoria.setNombre(nombre);
+		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
 		EntityManager entityManager=entityManagerFactory.createEntityManager();//PreparedStatement para las consultas
 		entityManager.getTransaction().begin();
 		entityManager.persist(categoria);

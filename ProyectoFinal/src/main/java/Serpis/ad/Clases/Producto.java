@@ -26,7 +26,7 @@ public class Producto {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "id_cat",foreignKey = @ForeignKey(name = "id_cat"))	
+	@JoinColumn(name = "categoria",foreignKey = @ForeignKey(name = "id_cat"))	
 	
 	private Categoria id_cat;
 

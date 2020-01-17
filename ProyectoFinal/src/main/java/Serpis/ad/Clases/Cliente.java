@@ -13,29 +13,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-@Entity(name="Clientes")
+@Entity(name="Cliente")
 public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_cliente;
 	
-	@Column
-	private String dni;
 	
 	@Column
 	private String nombre;
 	
-	@Column
-	private Long telefono;
 
-	
-	@OneToMany(targetEntity=Pedido.class,cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name ="id_cliente")
-	
-	private List<Pedido> ped;
-	
-	
 	
 	public Long getId_cliente() {
 		return id_cliente;
@@ -45,13 +34,7 @@ public class Cliente {
 		this.id_cliente = id_cliente;
 	}
 
-	public String getDni() {
-		return dni;
-	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -61,12 +44,5 @@ public class Cliente {
 		this.nombre = nombre;
 	}
 
-	public Long getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(Long telefono) {
-		this.telefono = telefono;
-	}
 }
 

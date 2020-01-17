@@ -21,7 +21,6 @@ public class Categoria {
 	
 	@Column
 	private String nombre;
-	
 
 	
 	
@@ -29,7 +28,7 @@ public class Categoria {
 		return id_cat;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id_cat = id;
 	}
 	

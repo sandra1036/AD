@@ -32,13 +32,16 @@ public class Linea_pedido {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pedido",foreignKey = @ForeignKey(name = "pedido"))
+	@JoinColumn(name = "id_producto",foreignKey = @ForeignKey(name = "producto"))
 	
 
 	private Producto producto;
-	
-	private List<Producto> pro;
 
+	
+	@ManyToOne
+	@JoinColumn(name = "id_pedido",foreignKey = @ForeignKey(name = "pedido"))
+	private Pedido pedido;
+	
 	public Long getId_lineapedido() {
 		return id_lineapedido;
 	}
@@ -79,14 +82,7 @@ public class Linea_pedido {
 		this.producto = producto;
 	}
 
-	public List<Producto> getPro() {
-		return pro;
-	}
 
-	public void setPro(List<Producto> pro) {
-		this.pro = pro;
-	}
-	
 	
 
 	

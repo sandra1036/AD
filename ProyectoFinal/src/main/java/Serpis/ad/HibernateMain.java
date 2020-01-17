@@ -11,7 +11,7 @@ import Serpis.ad.DAO.ProductosDAO;
 
 public class HibernateMain {
 		private static Cliente cli;
-	
+		private static Categoria cat;
 	public static void main(String[] args) {
 		Scanner tcl=new Scanner(System.in);
 		System.out.println("======Menu=====");
@@ -74,7 +74,7 @@ public class HibernateMain {
 				
 				switch (op3) {
 				case 1:
-					ProductosDAO.insertar();
+					ProductosDAO.insertar(cat);
 					break;
 
 				case 2:
