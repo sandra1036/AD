@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity(name="Pedido")
@@ -25,12 +26,13 @@ public class Pedido {
 	@Column
 	private Long precio;
 	
-	
-	@Column
-	private Long id_cliente;
+	@ManyToOne
+	@JoinColumn(name = "cliente")
+	private Cliente cliente;
 	
 	@OneToMany(targetEntity=Linea_pedido.class,cascade=CascadeType.ALL,orphanRemoval=true)
 	@JoinColumn(name ="pedido")
+	
 	
 	private List<Linea_pedido> linea_pedido;
 	
@@ -64,13 +66,25 @@ public class Pedido {
 	}
 
 
-	public Long getId_cliente() {
-		return id_cliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
 
-	public void setId_cliente(Long id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
+
+
+	public List<Linea_pedido> getLinea_pedido() {
+		return linea_pedido;
+	}
+
+
+	public void setLinea_pedido(List<Linea_pedido> linea_pedido) {
+		this.linea_pedido = linea_pedido;
+	}
+
+
 	
 }

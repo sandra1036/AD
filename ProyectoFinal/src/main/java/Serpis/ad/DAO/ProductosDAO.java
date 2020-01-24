@@ -14,7 +14,7 @@ public class ProductosDAO {
 	
 	public static void insertar(Categoria cat) {
 		Scanner tcl=new Scanner(System.in);
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");//conexion a la base de datos
+		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
 		Producto pro=new Producto();
 		System.out.println("Dime el nombre del Producto:");
 		String nombre=tcl.nextLine();
@@ -24,7 +24,7 @@ public class ProductosDAO {
 		pro.setPrecio(precio);
 		System.out.println("Dime la id_categoria:");
 		pro.setCat(cat);
-		EntityManager entityManager=entityManagerFactory.createEntityManager();//PreparedStatement para las consultas
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(pro);
 		entityManager.getTransaction().commit();

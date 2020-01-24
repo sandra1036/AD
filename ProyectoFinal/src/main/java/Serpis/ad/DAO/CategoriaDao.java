@@ -24,13 +24,17 @@ public class CategoriaDao {
 		String nombre=tcl.nextLine();
 		categoria.setNombre(nombre);
 		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		EntityManager entityManager=entityManagerFactory.createEntityManager();//PreparedStatement para las consultas
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(categoria);
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		entityManagerFactory.close();
 	}
+	
+	
+	
+	
 	
 
 

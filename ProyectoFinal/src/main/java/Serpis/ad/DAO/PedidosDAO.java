@@ -14,18 +14,15 @@ public class PedidosDAO {
 
 	public static void Insert(Cliente cli) {
 		Scanner tcl=new Scanner(System.in);
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");//crea la conexión a la base de datos
+		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
 		Pedido ped=new Pedido();
-		System.out.println("Cliente: ");
-		Long id_cliente=tcl.nextLong();
-		cli.setId_cliente(id_cliente);
 		System.out.println("Dime cuantos quieres: ");
 		Long cant=tcl.nextLong();
 		ped.setCantidad(cant);
 		System.out.println("Dime el precio");
 		Long pre=tcl.nextLong();
 		ped.setPrecio(pre);	
-		EntityManager entityManager=entityManagerFactory.createEntityManager();//PreparedStatement para las consultas
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(ped);
 		entityManager.getTransaction().commit();

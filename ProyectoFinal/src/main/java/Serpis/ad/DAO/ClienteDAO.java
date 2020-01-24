@@ -12,15 +12,11 @@ import javax.persistence.Persistence;
 import Serpis.ad.Clases.Cliente;
 
 public class ClienteDAO {
-	public static EntityManagerFactory entityManagerFactory;//crea la conexión a la base de datos
+	public static EntityManagerFactory entityManagerFactory;
 	public static EntityManager entityManager;
-		
+	public static Cliente cli =new Cliente();
 	public static void Insert() {
 		Scanner tcl=new Scanner(System.in);
-		
-		Cliente cli=new Cliente();
-		Long id=tcl.nextLong();
-		cli.setId_cliente(id);
 		cli.setNombre("Cliente"+LocalDateTime.now());
 		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
 		entityManager=entityManagerFactory.createEntityManager();

@@ -20,18 +20,18 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_cliente;
 	
-	
 	@Column
 	private String nombre;
 	
-
+	@OneToMany(targetEntity=Pedido.class,cascade=CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name ="id_cliente")
 	
 	public Long getId_cliente() {
 		return id_cliente;
 	}
 
-	public void setId_cliente(Long id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setId_cliente(Long id) {
+		this.id_cliente = id;
 	}
 
 
