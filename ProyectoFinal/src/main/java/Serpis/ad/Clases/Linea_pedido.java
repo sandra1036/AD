@@ -32,14 +32,14 @@ public class Linea_pedido {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "id_producto",foreignKey = @ForeignKey(name = "producto"))
+	@JoinColumn(name = "id_producto",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_2"))
 	
 
 	private Producto producto;
 
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pedido",foreignKey = @ForeignKey(name = "pedido"))
+	@JoinColumn(name = "id_pedido",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_1"))
 	private Pedido pedido;
 	
 	public Long getId_lineapedido() {

@@ -26,9 +26,9 @@ public class Producto {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "categoria")	
+	@JoinColumn(name = "categoria",foreignKey=@ForeignKey(name="producto_ibfk_1"))	
 	
-	private Categoria id_cat;
+	private Categoria categoria;
 
 
 	public Long getId_producto() {
@@ -62,12 +62,12 @@ public class Producto {
 
 
 	public Categoria getCat() {
-		return id_cat;
+		return categoria;
 	}
 
 
 	public void setCat(Categoria cat) {
-		this.id_cat = cat;
+		this.categoria= cat;
 	}
 	
 	

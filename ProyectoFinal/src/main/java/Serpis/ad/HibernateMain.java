@@ -2,6 +2,8 @@ package Serpis.ad;
 
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+
 import Serpis.ad.Clases.Categoria;
 import Serpis.ad.Clases.Cliente;
 import Serpis.ad.DAO.CategoriaDao;
@@ -10,8 +12,7 @@ import Serpis.ad.DAO.PedidosDAO;
 import Serpis.ad.DAO.ProductosDAO;
 
 public class HibernateMain {
-		private static Cliente cli;
-		private static Categoria cat;
+
 	public static void main(String[] args) {
 		Scanner tcl=new Scanner(System.in);
 		System.out.println("======Menu=====");
@@ -49,7 +50,7 @@ public class HibernateMain {
 					
 					break;
 				case 4:
-					
+					CategoriaDao.show();
 					break;
 					
 				case 0:
@@ -74,7 +75,7 @@ public class HibernateMain {
 				
 				switch (op3) {
 				case 1:
-					ProductosDAO.insertar(cat);
+					ProductosDAO.insertar();
 					break;
 
 				case 2:
@@ -147,7 +148,7 @@ public class HibernateMain {
 				
 				switch (op5) {
 				case 1:
-						PedidosDAO.Insert(cli);
+						PedidosDAO.Insert();
 					break;
 
 				case 2:

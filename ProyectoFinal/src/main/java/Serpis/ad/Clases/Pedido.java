@@ -1,5 +1,6 @@
 package Serpis.ad.Clases;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,20 +12,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 @Entity(name="Pedido")
 public class Pedido {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_pedido;
-	
-	@Column 
-	private Long cantidad;
-	
+	private Long id;
+
 
 	@Column
-	private Long precio;
+	private LocalDateTime fecha;
+	
+	
+	@Column
+	private Long importe;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente")
@@ -37,32 +40,34 @@ public class Pedido {
 	private List<Linea_pedido> linea_pedido;
 	
 	public Long getId_pedido() {
-		return id_pedido;
+		return id;
 	}
 
 
 	public void setId_pedido(Long id_pedido) {
-		this.id_pedido = id_pedido;
+		this.id = id_pedido;
 	}
 
 
-	public Long getCantidad() {
-		return cantidad;
+
+
+	public LocalDateTime getFecha() {
+		return fecha;
 	}
 
 
-	public void setCantidad(Long cantidad) {
-		this.cantidad = cantidad;
+	public void setFecha(LocalDateTime fecha) {
+		this.fecha = fecha;
 	}
 
 
 	public Long getPrecio() {
-		return precio;
+		return importe;
 	}
 
 
-	public void setPrecio(Long precio) {
-		this.precio = precio;
+	public void setPrecio(Long importe) {
+		this.importe = importe;
 	}
 
 

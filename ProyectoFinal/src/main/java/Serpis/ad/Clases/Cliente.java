@@ -18,7 +18,7 @@ public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_cliente;
+	private Long id;
 	
 	@Column
 	private String nombre;
@@ -27,11 +27,11 @@ public class Cliente {
 	@JoinColumn(name ="id_cliente")
 	
 	public Long getId_cliente() {
-		return id_cliente;
+		return id;
 	}
 
 	public void setId_cliente(Long id) {
-		this.id_cliente = id;
+		this.id = id;
 	}
 
 
