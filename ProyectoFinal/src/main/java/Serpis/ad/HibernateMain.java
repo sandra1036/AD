@@ -8,6 +8,7 @@ import Serpis.ad.Clases.Categoria;
 import Serpis.ad.Clases.Cliente;
 import Serpis.ad.DAO.CategoriaDao;
 import Serpis.ad.DAO.ClienteDAO;
+import Serpis.ad.DAO.Linea_PedidoDAO;
 import Serpis.ad.DAO.PedidosDAO;
 import Serpis.ad.DAO.ProductosDAO;
 
@@ -185,7 +186,7 @@ public class HibernateMain {
 				
 				switch (op6) {
 				case 1:
-					
+					Linea_PedidoDAO.Insert();
 					break;
 
 				case 2:

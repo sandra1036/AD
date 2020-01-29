@@ -16,7 +16,7 @@ public class Producto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_producto;
+	private Long id;
 	
 	@Column 
 	private String nombre;
@@ -32,12 +32,12 @@ public class Producto {
 
 
 	public Long getId_producto() {
-		return id_producto;
+		return id;
 	}
 
 
 	public void setId_producto(Long id_producto) {
-		this.id_producto = id_producto;
+		this.id = id_producto;
 	}
 
 

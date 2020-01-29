@@ -14,11 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
-@Entity(name="lineapedido")
+@Entity(name="pedidolinea")
 public class Linea_pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_lineapedido;
+	private Long id;
 	
 	
 	@Column
@@ -32,22 +32,22 @@ public class Linea_pedido {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "id_producto",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_2"))
+	@JoinColumn(name = "producto",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_2"))
 	
 
 	private Producto producto;
 
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pedido",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_1"))
+	@JoinColumn(name = "pedido",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_1"))
 	private Pedido pedido;
 	
 	public Long getId_lineapedido() {
-		return id_lineapedido;
+		return id;
 	}
 
 	public void setId_lineapedido(Long id_lineapedido) {
-		this.id_lineapedido = id_lineapedido;
+		this.id = id_lineapedido;
 	}
 
 	public float getPrecio() {
@@ -56,6 +56,14 @@ public class Linea_pedido {
 
 	public void setPrecio(float precio) {
 		this.precio = precio;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	public float getUnidades() {
