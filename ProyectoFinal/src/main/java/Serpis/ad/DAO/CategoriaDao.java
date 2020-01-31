@@ -18,7 +18,7 @@ import Serpis.ad.Libreria.App;
 public class CategoriaDao {
 	
 	public static EntityManagerFactory entityManagerFactory;
-	public static EntityManager EntityManager; 
+	public static EntityManager entityManager; 
 
 	
 	
@@ -29,7 +29,7 @@ public class CategoriaDao {
 		String nombre=tcl.nextLine();
 		categoria.setNombre(nombre);
 		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		EntityManager entityManager=entityManagerFactory.createEntityManager();
+		entityManager=entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(categoria);
 		entityManager.getTransaction().commit();
@@ -49,9 +49,12 @@ public class CategoriaDao {
 	
 	
 	public static void show() {
-		 List<Categoria>categorias= EntityManager.createQuery("from Categoria order by id", Categoria.class).getResultList();
+		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
+		entityManager=entityManagerFactory.createEntityManager();
+		List<Categoria>categorias= entityManager.createQuery("from categoria order by id", Categoria.class).getResultList();
 		for (Categoria categoria : categorias)
-			System.out.printf("%3d %s %n", categoria.getId(), categoria.getNombre());		
+			System.out.printf("%d %s %n", categoria.getId(), categoria.getNombre());	
+	     entityManager.close();
 	}
 	
 	

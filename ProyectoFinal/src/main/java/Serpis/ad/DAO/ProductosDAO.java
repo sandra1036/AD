@@ -2,6 +2,7 @@ package Serpis.ad.DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
@@ -9,14 +10,17 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import Serpis.ad.Clases.Categoria;
+import Serpis.ad.Clases.Pedido;
 import Serpis.ad.Clases.Producto;
 
 public class ProductosDAO {
+	public static EntityManagerFactory entityManagerFactory;
+	public static EntityManager entityManager;
 	
 	public static void insertar() throws SQLException {
 		Scanner tcl=new Scanner(System.in);
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		EntityManager entityManager=entityManagerFactory.createEntityManager();
+		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
+		entityManager=entityManagerFactory.createEntityManager();
 		Producto pro=new Producto();
 		
 		System.out.println("Dime el nombre del Producto:");
@@ -36,6 +40,24 @@ public class ProductosDAO {
 		entityManagerFactory.close();
 		
 	}
+	
+	
+	
+	
+	
+	public static void show() {
+		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
+		entityManager=entityManagerFactory.createEntityManager();
+		List<Producto>productos= entityManager.createQuery("from producto order by id", Producto.class).getResultList();
+		System.out.println("ID "+" Nombre "+" Precio ");
+		for (Producto producto : productos)
+			System.out.printf("%d  %s  %f %n ", producto.getId_producto(), producto.getNombre(),producto.getPrecio());	
+	     entityManager.close();
+		
+		
+	}
+	
+	
 	
 
 

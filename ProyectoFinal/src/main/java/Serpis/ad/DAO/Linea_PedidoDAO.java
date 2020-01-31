@@ -1,6 +1,7 @@
 package Serpis.ad.DAO;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.Entity;
@@ -47,6 +48,17 @@ public static void Insert() {
 		entityManagerFactory.close();
 
 }
+
+	public static void show() {
+		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
+		entityManager=entityManagerFactory.createEntityManager();
+		List<Linea_pedido>linea_pedidos= entityManager.createQuery("from pedidolinea order by id", Linea_pedido.class).getResultList();
+		for (Linea_pedido linea_pedido : linea_pedidos)
+			System.out.printf("%d  %d  %s %f %f %f %n", linea_pedido.getId_lineapedido(), linea_pedido.getPedido().getId_pedido(),
+					linea_pedido.getProducto().getNombre(),linea_pedido.getPrecio(),linea_pedido.getUnidades(),
+					linea_pedido.getImporte());	
+	     entityManager.close();
+	}
 	
 	
 	

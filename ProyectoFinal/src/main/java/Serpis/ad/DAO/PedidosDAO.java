@@ -1,6 +1,7 @@
 package Serpis.ad.DAO;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
@@ -13,12 +14,11 @@ import Serpis.ad.Clases.Pedido;
 
 public class PedidosDAO {
 
-	public static EntityManagerFactory entityManagerFactory;
-	public static EntityManager entityManager;
+	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
+	public static EntityManager entityManager=entityManagerFactory.createEntityManager();
+	
 	public static void Insert() {
 		Scanner tcl=new Scanner(System.in);
-		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		entityManager=entityManagerFactory.createEntityManager();
 		Pedido ped=new Pedido();
 		System.out.println("Dime el precio");
 		Long pre=tcl.nextLong();
@@ -31,8 +31,14 @@ public class PedidosDAO {
 		entityManager.getTransaction().begin();
 		entityManager.persist(ped);
 		entityManager.getTransaction().commit();
-		entityManager.close();
-		entityManagerFactory.close();
+
+	}
+	
+	public  static void show(){
+		List<Pedido>pedidos= entityManager.createQuery("from Pedido order by id", Pedido.class).getResultList();
+		System.out.println("ID  "+"  Fecha  "+"  Nombre  "+"  Precio  ");
+		for (Pedido pedido : pedidos)
+			System.out.printf("%d  %s  %s %d %n", pedido.getId_pedido(), pedido.getFecha(),pedido.getCliente().getNombre(),pedido.getPrecio());	
 
 	}
 }

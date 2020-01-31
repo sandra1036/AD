@@ -10,16 +10,17 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import Serpis.ad.Clases.Cliente;
+import Serpis.ad.Clases.Producto;
 
 public class ClienteDAO {
-	public static EntityManagerFactory entityManagerFactory;
-	public static EntityManager entityManager;
+	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");;
+	public static EntityManager entityManager=entityManagerFactory.createEntityManager();;
 	public static Cliente cli =new Cliente();
 	public static void Insert() {
 		Scanner tcl=new Scanner(System.in);
-		cli.setNombre("Cliente"+LocalDateTime.now());
-		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		entityManager=entityManagerFactory.createEntityManager();
+		System.out.println("Nombre del cliente: ");
+		String nombre=tcl.nextLine();
+		cli.setNombre(nombre);
 		entityManager.getTransaction().begin();
 		entityManager.persist(cli);
 		entityManager.getTransaction().commit();
@@ -59,23 +60,14 @@ public class ClienteDAO {
 		
 	}
 	
-//	public static void ShowAll(List<Clientes> clientes) {
-//
-//		for ( Clientes cliente : clientes )
-//			System.out.printf("%3d %s %s %n",cliente.getId_cliente(),cliente.getDni(), cliente.getNombre(),cliente.getTelefono());
-//		
-//		
-//	}
 
-	public static List<Cliente> ShowAll(Cliente cli) {
-
-		Scanner tcl=new Scanner(System.in);
-		entityManager.getTransaction().begin();
-		List<Cliente>list=entityManager.createQuery("from Clientes ",Cliente.class).getResultList();
+	public static void show() {
+		List<Cliente> clientes= entityManager.createQuery("from Cliente order by id", Cliente.class).getResultList();
+		System.out.println("ID "+" Nombre ");
+		for (Cliente cliente : clientes)
+			System.out.printf("%d  %s %n ", cliente.getId_cliente(), cliente.getNombre());			
 		
-		
-		entityManager.getTransaction().commit();
-		entityManager.close();
-		return list; 
 	}
+
+	
 }

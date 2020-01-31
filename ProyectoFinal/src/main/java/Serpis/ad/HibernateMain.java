@@ -1,11 +1,13 @@
 package Serpis.ad;
 
+import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
 
 import Serpis.ad.Clases.Categoria;
 import Serpis.ad.Clases.Cliente;
+import Serpis.ad.Clases.Pedido;
 import Serpis.ad.DAO.CategoriaDao;
 import Serpis.ad.DAO.ClienteDAO;
 import Serpis.ad.DAO.Linea_PedidoDAO;
@@ -13,7 +15,8 @@ import Serpis.ad.DAO.PedidosDAO;
 import Serpis.ad.DAO.ProductosDAO;
 
 public class HibernateMain {
-
+	
+	
 	public static void main(String[] args) {
 		Scanner tcl=new Scanner(System.in);
 		System.out.println("======Menu=====");
@@ -87,7 +90,7 @@ public class HibernateMain {
 					
 					break;
 				case 4:
-					
+					ProductosDAO.show();
 					break;
 					
 				case 0:
@@ -124,7 +127,7 @@ public class HibernateMain {
 					
 					break;
 				case 4:
-					
+					ClienteDAO.show();
 					break;
 					
 				case 0:
@@ -160,7 +163,7 @@ public class HibernateMain {
 					
 					break;
 				case 4:
-					
+					PedidosDAO.show();
 					break;
 					
 				case 0:
@@ -197,7 +200,7 @@ public class HibernateMain {
 					
 					break;
 				case 4:
-					
+					Linea_PedidoDAO.show();
 					break;
 					
 				case 0:
