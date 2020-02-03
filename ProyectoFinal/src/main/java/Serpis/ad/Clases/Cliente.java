@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import Serpis.ad.DAO.PedidosDAO;
+
 @Entity(name="Cliente")
 public class Cliente {
 	
@@ -22,9 +24,8 @@ public class Cliente {
 	
 	@Column
 	private String nombre;
+
 	
-	@OneToMany(targetEntity=Pedido.class,cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name ="id_cliente")
 	
 	public Long getId_cliente() {
 		return id;

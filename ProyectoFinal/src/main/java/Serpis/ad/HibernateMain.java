@@ -120,11 +120,11 @@ public class HibernateMain {
 					break;
 
 				case 2:
-					
+					ClienteDAO.update();
 					break;
 					
 				case 3:
-					
+					ClienteDAO.Delete();
 					break;
 				case 4:
 					ClienteDAO.show();

@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.result.NoMoreReturnsException;
+
 import Serpis.ad.Clases.Cliente;
 import Serpis.ad.Clases.Producto;
 
@@ -28,35 +30,32 @@ public class ClienteDAO {
 		entityManagerFactory.close();
 	}
 	
-	public static void Update() {
-		
+	public static void update() {
+	
 		Scanner tcl=new Scanner(System.in);
 		System.out.println("¿Cual es el id que deseas cambiar?");
 		Long idcliente=tcl.nextLong();	
-		entityManager=entityManagerFactory.createEntityManager();
-		entityManager.createQuery("from clientes where id_cliente=idcliente");
-		System.out.println("¿Qué deseas cambiar?");
-		System.out.println("1.Nombre");
-		int op =tcl.nextInt();
-		switch (op) {
-		case 1:
-			
-			break;
-
-		case 2:
-			break;
-			
-			
-		case 3:
-			
-			break;
-		default:
-			break;
-		}
-		
+		cli=entityManager.find(Cliente.class, idcliente);
+		Scanner tcl2=new Scanner(System.in);
+			System.out.println("Elige el nuevo nombre");
+			entityManager.getTransaction().begin();
+			cli.setNombre(tcl2.nextLine());
+			entityManager.getTransaction().commit();
+			entityManager.close();
 	}
+		
+	
 	
 	public static void Delete() {
+		Scanner tcl=new Scanner(System.in);
+		System.out.println("Dime el id del cliente a eliminar");
+		Long id=tcl.nextLong();
+		cli=entityManager.find(Cliente.class, id);
+    	entityManager.getTransaction().begin();
+    	entityManager.remove(cli);
+    	entityManager.getTransaction().commit();
+    	entityManager.close();
+
 		
 	}
 	
