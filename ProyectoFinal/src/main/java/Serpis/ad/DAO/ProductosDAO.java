@@ -14,24 +14,20 @@ import Serpis.ad.Clases.Pedido;
 import Serpis.ad.Clases.Producto;
 
 public class ProductosDAO {
-	public static EntityManagerFactory entityManagerFactory;
-	public static EntityManager entityManager;
-	
+	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");;
+	public static EntityManager entityManager=entityManagerFactory.createEntityManager();
+	public static Producto pro=new Producto();
+	public static Categoria cat;
 	public static void insertar() throws SQLException {
 		Scanner tcl=new Scanner(System.in);
-		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		entityManager=entityManagerFactory.createEntityManager();
-		Producto pro=new Producto();
-		
 		System.out.println("Dime el nombre del Producto:");
 		String nombre=tcl.nextLine();
 		pro.setNombre(nombre);
-		
 		System.out.println("Dime el precio");
 		float precio=tcl.nextFloat();
 		pro.setPrecio(precio);
 		System.out.println("Dime categoria");
-		Categoria cat=entityManager.find(Categoria.class,tcl.nextLong());
+		cat=entityManager.find(Categoria.class,tcl.nextLong());
 		pro.setCat(cat);
 		entityManager.getTransaction().begin();
 		entityManager.persist(pro);
@@ -41,6 +37,30 @@ public class ProductosDAO {
 		
 	}
 	
+	public static void update() {
+		Scanner tcl=new Scanner(System.in);
+		System.out.println("Id a cambiar");
+		Long id_producto=tcl.nextLong();
+		pro=entityManager.find(Producto.class, id_producto);
+		entityManager.getTransaction().begin();
+		Scanner tcl2=new Scanner(System.in);
+		System.out.println("Nombre");
+		pro.setNombre(tcl2.nextLine());
+		System.out.println("Precio");
+		pro.setPrecio(tcl.nextFloat());
+		System.out.println("Id_Categoria:");
+		cat=entityManager.find(Categoria.class,tcl.nextLong());
+		pro.setCat(cat);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		
+		
+		
+		
+		
+		
+		
+	}
 	
 	
 	

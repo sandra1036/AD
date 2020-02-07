@@ -17,19 +17,17 @@ import Serpis.ad.Libreria.App;
 
 public class CategoriaDao {
 	
-	public static EntityManagerFactory entityManagerFactory;
-	public static EntityManager entityManager; 
-
+	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");;
+	public static EntityManager entityManager =entityManagerFactory.createEntityManager();
+	public static Categoria categoria;
 	
 	
 	public static void insertar() {
 		Scanner tcl=new Scanner(System.in);
-		Categoria categoria=new Categoria();
+		categoria=new Categoria();
 		System.out.println("Dime el nombre de la categoria:");
 		String nombre=tcl.nextLine();
 		categoria.setNombre(nombre);
-		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		entityManager=entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(categoria);
 		entityManager.getTransaction().commit();
@@ -39,22 +37,25 @@ public class CategoriaDao {
 	}
 
 	public static void update() {
-		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
+		Scanner tcl=new Scanner(System.in);
+		System.out.println("Categoria a cambiar");
+		Long id_cat=tcl.nextLong();
+		categoria=entityManager.find(Categoria.class, id_cat);
+		Scanner tcl2=new Scanner(System.in);
+		System.out.println("Elige el nuevo nombre:");
+		entityManager.getTransaction().begin();
+		categoria.setNombre(tcl.nextLine());
+		entityManager.getTransaction().commit();
+		entityManager.close();
 		
 		
 	}
-	public static void delete() {
-		
-	}
-	
 	
 	public static void show() {
-		entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-		entityManager=entityManagerFactory.createEntityManager();
 		List<Categoria>categorias= entityManager.createQuery("from categoria order by id", Categoria.class).getResultList();
 		for (Categoria categoria : categorias)
 			System.out.printf("%d %s %n", categoria.getId(), categoria.getNombre());	
-	     entityManager.close();
+	    
 	}
 	
 	

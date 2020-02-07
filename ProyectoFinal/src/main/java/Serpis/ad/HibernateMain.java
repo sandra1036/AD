@@ -36,8 +36,7 @@ public class HibernateMain {
 				System.out.println("¿Qué desea hacer?");
 				System.out.println("1.Insertar");
 				System.out.println("2.Modificar");
-				System.out.println("3.Borrar");
-				System.out.println("4.Mostrar");
+				System.out.println("3.Mostrar");
 				System.out.println("0.Salir");
 				int op2=tcl.nextInt();
 				
@@ -51,9 +50,6 @@ public class HibernateMain {
 					break;
 					
 				case 3:
-					
-					break;
-				case 4:
 					CategoriaDao.show();
 					break;
 					
@@ -72,8 +68,7 @@ public class HibernateMain {
 				System.out.println("¿Qué desea hacer?");
 				System.out.println("1.Insertar");
 				System.out.println("2.Modificar");
-				System.out.println("3.Borrar");
-				System.out.println("4.Mostrar");
+				System.out.println("3.Mostrar");
 				System.out.println("0.Salir");
 				int op3=tcl.nextInt();
 				
@@ -83,12 +78,9 @@ public class HibernateMain {
 					break;
 
 				case 2:
-					
+					ProductosDAO.update();
 					break;
 					
-				case 3:
-					
-					break;
 				case 4:
 					ProductosDAO.show();
 					break;
@@ -109,8 +101,7 @@ public class HibernateMain {
 				System.out.println("¿Qué desea hacer?");
 				System.out.println("1.Insertar");
 				System.out.println("2.Modificar");
-				System.out.println("3.Borrar");
-				System.out.println("4.Mostrar");
+				System.out.println("3.Mostrar");
 				System.out.println("0.Salir");
 				int op4=tcl.nextInt();
 				
@@ -123,9 +114,7 @@ public class HibernateMain {
 					ClienteDAO.update();
 					break;
 					
-				case 3:
-					ClienteDAO.Delete();
-					break;
+
 				case 4:
 					ClienteDAO.show();
 					break;
@@ -156,15 +145,13 @@ public class HibernateMain {
 					break;
 
 				case 2:
-					
+					PedidosDAO.update();
 					break;
 					
 				case 3:
-					
-					break;
-				case 4:
 					PedidosDAO.show();
 					break;
+
 					
 				case 0:
 					
@@ -182,8 +169,7 @@ public class HibernateMain {
 				System.out.println("¿Qué desea hacer?");
 				System.out.println("1.Insertar");
 				System.out.println("2.Modificar");
-				System.out.println("3.Borrar");
-				System.out.println("4.Mostrar");
+				System.out.println("3.Mostrar");
 				System.out.println("0.Salir");
 				int op6=tcl.nextInt();
 				
@@ -195,11 +181,8 @@ public class HibernateMain {
 				case 2:
 					
 					break;
-					
+
 				case 3:
-					
-					break;
-				case 4:
 					Linea_PedidoDAO.show();
 					break;
 					
@@ -207,6 +190,7 @@ public class HibernateMain {
 					
 					System.exit(0);
 					break;
+					
 				default:
 					break;
 				}

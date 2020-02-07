@@ -10,29 +10,65 @@ import javax.persistence.Persistence;
 
 import Serpis.ad.Clases.Categoria;
 import Serpis.ad.Clases.Cliente;
+import Serpis.ad.Clases.Linea_pedido;
 import Serpis.ad.Clases.Pedido;
+import Serpis.ad.Clases.Producto;
 
 public class PedidosDAO {
 
 	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
-	public static EntityManager entityManager=entityManagerFactory.createEntityManager();
-	
+	public static EntityManager entityManager=entityManagerFactory.createEntityManager();		
+	public static Pedido ped=new Pedido();
+	public static Linea_pedido li=new Linea_pedido();
+	public static Cliente cli;
+	public static Producto producto;
 	public static void Insert() {
 		Scanner tcl=new Scanner(System.in);
-		Pedido ped=new Pedido();
 		System.out.println("Dime el precio");
 		Long pre=tcl.nextLong();
 		ped.setPrecio(pre);	
 		LocalDateTime fecha=LocalDateTime.now();
 		ped.setFecha(fecha);
 		System.out.println("id del cliente:");
-		Cliente cli=entityManager.find(Cliente.class,tcl.nextLong());
+		cli=entityManager.find(Cliente.class,tcl.nextLong());
 		ped.setCliente(cli);
+		li.setPedido(ped);
+		Scanner tcl2=new Scanner(System.in);
+		System.out.println("id producto:");
+		Long id_producto=tcl.nextLong();
+		producto=entityManager.find(Producto.class, id_producto);
+		li.setProducto(producto);
+
+		li.setPrecio(producto.getPrecio());
+		Scanner tcl3=new Scanner(System.in);
+		System.out.println("Unidades:");
+		float unidades=tcl3.nextFloat();
+		li.setUnidades(unidades);
 		entityManager.getTransaction().begin();
 		entityManager.persist(ped);
+		entityManager.persist(li);
 		entityManager.getTransaction().commit();
 
 	}
+	
+	public static void update() {
+		Scanner tcl=new Scanner(System.in);
+		System.out.println("¿Cual es el id que deseas cambiar?");
+		Long id_pedido=tcl.nextLong();
+		ped=entityManager.find(Pedido.class, id_pedido);
+		Scanner tcl2=new Scanner(System.in);
+		entityManager.getTransaction().begin();
+		System.out.println("Precio:");
+		ped.setPrecio(tcl2.nextLong());
+		System.out.println("Id Cliente");
+		cli=entityManager.find(Cliente.class, tcl.nextLong());
+		ped.setCliente(cli);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		
+		
+	}
+	
 	
 	public  static void show(){
 		List<Pedido>pedidos= entityManager.createQuery("from Pedido order by id", Pedido.class).getResultList();
