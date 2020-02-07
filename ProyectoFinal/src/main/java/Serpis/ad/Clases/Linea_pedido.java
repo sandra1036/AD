@@ -75,6 +75,9 @@ public class Linea_pedido {
 	}
 
 	public float getImporte() {
+		
+		
+		
 		return importe;
 	}
 

@@ -24,7 +24,6 @@ public class HibernateMain {
 		System.out.println("2.Producto");
 		System.out.println("3.Cliente");
 		System.out.println("4.Pedido");
-		System.out.println("5.Linea");
 		System.out.println("0.Salida");
 		
 		try {
@@ -163,50 +162,7 @@ public class HibernateMain {
 				
 				
 				break;
-			case 5:
-				
-				System.out.println("Has entrado en Linea_Pedido");
-				System.out.println("¿Qué desea hacer?");
-				System.out.println("1.Insertar");
-				System.out.println("2.Modificar");
-				System.out.println("3.Mostrar");
-				System.out.println("0.Salir");
-				int op6=tcl.nextInt();
-				
-				switch (op6) {
-				case 1:
-					Linea_PedidoDAO.Insert();
-					break;
-
-				case 2:
-					
-					break;
-
-				case 3:
-					Linea_PedidoDAO.show();
-					break;
-					
-				case 0:
-					
-					System.exit(0);
-					break;
-					
-				default:
-					break;
-				}
-				
-				
-				break;
-				
-			case 0:
-				
-				System.exit(0);
-				
-				break;
-			default:
-				break;
 			}
-			
 			
 			
 		} catch (Exception e) {

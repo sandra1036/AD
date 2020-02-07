@@ -24,9 +24,6 @@ public class PedidosDAO {
 	public static Producto producto;
 	public static void Insert() {
 		Scanner tcl=new Scanner(System.in);
-		System.out.println("Dime el precio");
-		Long pre=tcl.nextLong();
-		ped.setPrecio(pre);	
 		LocalDateTime fecha=LocalDateTime.now();
 		ped.setFecha(fecha);
 		System.out.println("id del cliente:");
@@ -38,12 +35,12 @@ public class PedidosDAO {
 		Long id_producto=tcl.nextLong();
 		producto=entityManager.find(Producto.class, id_producto);
 		li.setProducto(producto);
-
 		li.setPrecio(producto.getPrecio());
 		Scanner tcl3=new Scanner(System.in);
 		System.out.println("Unidades:");
 		float unidades=tcl3.nextFloat();
 		li.setUnidades(unidades);
+		li.setImporte(producto.getPrecio()*li.getUnidades());
 		entityManager.getTransaction().begin();
 		entityManager.persist(ped);
 		entityManager.persist(li);
