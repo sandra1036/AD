@@ -43,7 +43,6 @@ public class Pedido {
 		return id;
 	}
 
-
 	public void setId_pedido(Long id_pedido) {
 		this.id = id_pedido;
 	}
@@ -86,11 +85,8 @@ public class Pedido {
 		this.importe = importe;
 	}
 
-
 	public void setLinea_pedido(List<Linea_pedido> linea_pedido) {
 		this.linea_pedido = linea_pedido;
 	}
 
-
-	
 }

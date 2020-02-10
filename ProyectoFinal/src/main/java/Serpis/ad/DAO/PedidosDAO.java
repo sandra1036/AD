@@ -40,7 +40,7 @@ public class PedidosDAO {
 		System.out.println("Unidades:");
 		float unidades=tcl3.nextFloat();
 		li.setUnidades(unidades);
-		ped.setImporte(producto.getPrecio()*li.getUnidades());
+		 
 		li.setImporte(li.getPrecio()*li.getUnidades());
 		entityManager.getTransaction().begin();
 		entityManager.persist(ped);
@@ -54,9 +54,15 @@ public class PedidosDAO {
 		System.out.println("¿Cual es el id que deseas cambiar?");
 		Long id_pedido=tcl.nextLong();
 		ped=entityManager.find(Pedido.class, id_pedido);
+		System.out.println("ID Linea");
+		Long id_linea=tcl.nextLong();
+		li=entityManager.find(Linea_pedido.class, id_linea); 
 		Scanner tcl2=new Scanner(System.in);
 		entityManager.getTransaction().begin();
-		
+		System.out.println("Precio:");
+		float precio=tcl.nextFloat();
+		producto.setPrecio(precio);
+
 		System.out.println("Id Cliente");
 		cli=entityManager.find(Cliente.class, tcl.nextLong());
 		ped.setCliente(cli);
