@@ -27,7 +27,7 @@ public class Pedido {
 	
 	
 	@Column
-	private Long importe;
+	private float importe;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente")
@@ -61,15 +61,6 @@ public class Pedido {
 	}
 
 
-	public Long getPrecio() {
-		return importe;
-	}
-
-
-	public void setPrecio(Long importe) {
-		this.importe = importe;
-	}
-
 
 	public Cliente getCliente() {
 		return cliente;
@@ -83,6 +74,16 @@ public class Pedido {
 
 	public List<Linea_pedido> getLinea_pedido() {
 		return linea_pedido;
+	}
+
+
+	public float getImporte() {
+		return importe;
+	}
+
+
+	public void setImporte(float importe) {
+		this.importe = importe;
 	}
 
 

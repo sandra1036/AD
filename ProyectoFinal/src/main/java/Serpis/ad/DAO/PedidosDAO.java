@@ -40,7 +40,8 @@ public class PedidosDAO {
 		System.out.println("Unidades:");
 		float unidades=tcl3.nextFloat();
 		li.setUnidades(unidades);
-		li.setImporte(producto.getPrecio()*li.getUnidades());
+		ped.setImporte(producto.getPrecio()*li.getUnidades());
+		li.setImporte(li.getPrecio()*li.getUnidades());
 		entityManager.getTransaction().begin();
 		entityManager.persist(ped);
 		entityManager.persist(li);
@@ -55,8 +56,7 @@ public class PedidosDAO {
 		ped=entityManager.find(Pedido.class, id_pedido);
 		Scanner tcl2=new Scanner(System.in);
 		entityManager.getTransaction().begin();
-		System.out.println("Precio:");
-		ped.setPrecio(tcl2.nextLong());
+		
 		System.out.println("Id Cliente");
 		cli=entityManager.find(Cliente.class, tcl.nextLong());
 		ped.setCliente(cli);
@@ -71,7 +71,7 @@ public class PedidosDAO {
 		List<Pedido>pedidos= entityManager.createQuery("from Pedido order by id", Pedido.class).getResultList();
 		System.out.println("ID  "+"  Fecha  "+"  Nombre  "+"  Precio  ");
 		for (Pedido pedido : pedidos)
-			System.out.printf("%d  %s  %s %d %n", pedido.getId_pedido(), pedido.getFecha(),pedido.getCliente().getNombre(),pedido.getPrecio());	
+			System.out.printf("%d  %s  %s %d %n", pedido.getId_pedido(), pedido.getFecha(),pedido.getCliente().getNombre());	
 
 	}
 }
