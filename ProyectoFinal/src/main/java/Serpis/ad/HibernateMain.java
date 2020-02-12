@@ -147,7 +147,13 @@ public class HibernateMain {
 					PedidosDAO.update();
 					break;
 					
+					
 				case 3:
+					PedidosDAO.delete();
+					
+					break;
+					
+				case 4:
 					PedidosDAO.show();
 					break;
 

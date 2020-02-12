@@ -19,7 +19,7 @@ public class PedidosDAO {
 	public static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("serpis.ad.proyectofinal");
 	public static EntityManager entityManager=entityManagerFactory.createEntityManager();		
 	public static Pedido ped=new Pedido();
-	public static Linea_pedido li=new Linea_pedido();
+	public static Linea_pedido li=new Linea_pedido(ped);
 	public static Cliente cli;
 	public static Producto producto;
 	public static void Insert() {
@@ -40,11 +40,9 @@ public class PedidosDAO {
 		System.out.println("Unidades:");
 		float unidades=tcl3.nextFloat();
 		li.setUnidades(unidades);
-		 
-		li.setImporte(li.getPrecio()*li.getUnidades());
+		li.setImporte();
 		entityManager.getTransaction().begin();
 		entityManager.persist(ped);
-		entityManager.persist(li);
 		entityManager.getTransaction().commit();
 
 	}
@@ -61,8 +59,8 @@ public class PedidosDAO {
 		entityManager.getTransaction().begin();
 		System.out.println("Precio:");
 		float precio=tcl.nextFloat();
-		producto.setPrecio(precio);
-
+		ped.setImporte();
+		li.setPrecio(precio);
 		System.out.println("Id Cliente");
 		cli=entityManager.find(Cliente.class, tcl.nextLong());
 		ped.setCliente(cli);
@@ -71,6 +69,19 @@ public class PedidosDAO {
 		
 		
 	}
+	
+	public static void delete() {
+		Scanner tcl=new Scanner(System.in);
+		System.out.println("Dime el id del pedido a eliminar");
+		Long id=tcl.nextLong();
+		ped=entityManager.find(Pedido.class, id);
+    	entityManager.getTransaction().begin();
+    	entityManager.remove(ped);
+    	entityManager.getTransaction().commit();
+    	entityManager.close();
+
+	}
+	
 	
 	
 	public  static void show(){

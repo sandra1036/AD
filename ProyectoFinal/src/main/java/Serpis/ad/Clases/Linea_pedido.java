@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 
 @Entity(name="pedidolinea")
@@ -28,20 +30,36 @@ public class Linea_pedido {
 	private float unidades;
 	
 	@Column
-	private float importe;
+	private float importe=0f;
 
 	
 	@ManyToOne
-	@JoinColumn(name = "producto",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_2"))
+	@JoinColumn(name = "producto")
 	
 
 	private Producto producto;
 
 	
 	@ManyToOne
-	@JoinColumn(name = "pedido",foreignKey = @ForeignKey(name = "pedidolinea_ibfk_1"))
+	@JoinColumn(name = "pedido")
 	private Pedido pedido;
 	
+	
+	public Linea_pedido(Pedido pedido) {
+		this.pedido=pedido;
+		pedido.getLinea_pedido().add(this);
+		
+	}
+	
+	
+	
+	
+	public Linea_pedido() {
+	}
+
+
+
+
 	public Long getId_lineapedido() {
 		return id;
 	}
@@ -75,14 +93,17 @@ public class Linea_pedido {
 	}
 
 	public float getImporte() {
-		
-		
-		
+		if(this.importe==0f) 
+			this.setImporte();
+	
 		return importe;
 	}
 
-	public void setImporte(float importe) {
-		this.importe = importe;
+	
+
+	@PreUpdate
+	public void setImporte() {
+		this.importe = unidades*precio;
 	}
 
 	public Producto getProducto() {

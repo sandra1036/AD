@@ -1,6 +1,7 @@
 package Serpis.ad.Clases;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
 @Entity(name="Pedido")
@@ -33,11 +36,10 @@ public class Pedido {
 	@JoinColumn(name = "cliente")
 	private Cliente cliente;
 	
-	@OneToMany(targetEntity=Linea_pedido.class,cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name ="pedido")
+	@OneToMany(mappedBy="pedido",cascade=CascadeType.ALL,orphanRemoval=true)
 	
 	
-	private List<Linea_pedido> linea_pedido;
+	private List<Linea_pedido> linea_pedido=new ArrayList<Linea_pedido>();
 	
 	public Long getId_pedido() {
 		return id;
@@ -80,9 +82,12 @@ public class Pedido {
 		return importe;
 	}
 
-
-	public void setImporte(float importe) {
-		this.importe = importe;
+	@PrePersist
+	@PreUpdate
+	public void setImporte() {
+		for(Linea_pedido linea: getLinea_pedido()) {
+			this.importe +=linea.getImporte();
+		}
 	}
 
 	public void setLinea_pedido(List<Linea_pedido> linea_pedido) {

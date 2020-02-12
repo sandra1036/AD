@@ -40,7 +40,7 @@ public static void Insert() {
 		float unidades=tcl.nextFloat();
 		lped.setUnidades(unidades);
 		float importe=tcl.nextFloat();
-		lped.setImporte(importe);
+		lped.setImporte();
 		entityManager.getTransaction().begin();
 		entityManager.persist(lped);
 		entityManager.getTransaction().commit();
