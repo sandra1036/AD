@@ -44,7 +44,7 @@ public class CategoriaDao {
 		Scanner tcl2=new Scanner(System.in);
 		System.out.println("Elige el nuevo nombre:");
 		entityManager.getTransaction().begin();
-		categoria.setNombre(tcl.nextLine());
+		categoria.setNombre(tcl2.nextLine());
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		

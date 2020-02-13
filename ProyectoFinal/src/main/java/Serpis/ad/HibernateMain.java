@@ -10,7 +10,6 @@ import Serpis.ad.Clases.Cliente;
 import Serpis.ad.Clases.Pedido;
 import Serpis.ad.DAO.CategoriaDao;
 import Serpis.ad.DAO.ClienteDAO;
-import Serpis.ad.DAO.Linea_PedidoDAO;
 import Serpis.ad.DAO.PedidosDAO;
 import Serpis.ad.DAO.ProductosDAO;
 
@@ -45,7 +44,7 @@ public class HibernateMain {
 					break;
 
 				case 2:
-					
+					CategoriaDao.update();
 					break;
 					
 				case 3:
@@ -80,7 +79,7 @@ public class HibernateMain {
 					ProductosDAO.update();
 					break;
 					
-				case 4:
+				case 3:
 					ProductosDAO.show();
 					break;
 					

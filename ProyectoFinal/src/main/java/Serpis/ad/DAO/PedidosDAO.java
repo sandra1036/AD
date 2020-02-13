@@ -56,14 +56,16 @@ public class PedidosDAO {
 		Long id_linea=tcl.nextLong();
 		li=entityManager.find(Linea_pedido.class, id_linea); 
 		Scanner tcl2=new Scanner(System.in);
-		entityManager.getTransaction().begin();
 		System.out.println("Precio:");
 		float precio=tcl.nextFloat();
-		ped.setImporte();
 		li.setPrecio(precio);
+		float unidades=tcl.nextFloat();
+		li.setUnidades(unidades);
 		System.out.println("Id Cliente");
 		cli=entityManager.find(Cliente.class, tcl.nextLong());
 		ped.setCliente(cli);
+		entityManager.getTransaction().begin();
+		ped.setImporte();
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		

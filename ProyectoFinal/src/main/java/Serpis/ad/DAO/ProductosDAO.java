@@ -29,6 +29,7 @@ public class ProductosDAO {
 		System.out.println("Dime categoria");
 		cat=entityManager.find(Categoria.class,tcl.nextLong());
 		pro.setCat(cat);
+		
 		entityManager.getTransaction().begin();
 		entityManager.persist(pro);
 		entityManager.getTransaction().commit();
@@ -71,7 +72,7 @@ public class ProductosDAO {
 		List<Producto>productos= entityManager.createQuery("from producto order by id", Producto.class).getResultList();
 		System.out.println("ID "+" Nombre "+" Precio ");
 		for (Producto producto : productos)
-			System.out.printf("%d  %s  %f %n ", producto.getId_producto(), producto.getNombre(),producto.getPrecio());	
+			System.out.printf("%d  %s  %.2f %n ", producto.getId_producto(), producto.getNombre(),producto.getPrecio());	
 	     entityManager.close();
 		
 		
