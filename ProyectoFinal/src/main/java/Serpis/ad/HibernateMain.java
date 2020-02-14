@@ -113,7 +113,7 @@ public class HibernateMain {
 					break;
 					
 
-				case 4:
+				case 3:
 					ClienteDAO.show();
 					break;
 					

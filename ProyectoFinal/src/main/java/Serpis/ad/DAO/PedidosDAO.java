@@ -90,7 +90,7 @@ public class PedidosDAO {
 		List<Pedido>pedidos= entityManager.createQuery("from Pedido order by id", Pedido.class).getResultList();
 		System.out.println("ID  "+"  Fecha  "+"  Nombre  "+"  Precio  ");
 		for (Pedido pedido : pedidos)
-			System.out.printf("%d  %s  %s %d %n", pedido.getId_pedido(), pedido.getFecha(),pedido.getCliente().getNombre());	
+			System.out.printf("%d  %s  %s %n", pedido.getId_pedido(), pedido.getFecha(),pedido.getCliente().getNombre());	
 
 	}
 }

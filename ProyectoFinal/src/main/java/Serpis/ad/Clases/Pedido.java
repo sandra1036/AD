@@ -38,9 +38,8 @@ public class Pedido {
 	private Cliente cliente;
 	
 	@OneToMany(mappedBy="pedido",cascade=CascadeType.ALL,orphanRemoval=true)
-	
-	
 	private List<Linea_pedido> linea_pedido=new ArrayList<Linea_pedido>();
+	
 	
 	public Long getId_pedido() {
 		return id;
